@@ -2,7 +2,14 @@
 #include <string>
 using namespace std;
 
-int main() {
+int main()
+{
+    /*     Se ingresa una edad, mostrar por pantalla alguna de las siguientes leyendas:
+    ∙ ‘menor’ si la edad es menor o igual a 12
+    ∙ ‘cadete’ si la edad esta comprendida entre 13 y 18
+    ∙ ‘juvenil’ si la edad es mayor que 18 y no supera los 26
+    ∙ ‘mayor’ en el caso que no cumpla ninguna de las condiciones anteriores */
+    
     int age = 0;
     string rank = "";
 
@@ -14,7 +21,7 @@ int main() {
         cout << "John Doe aún no ha nacido." << endl;
         return 0;
     }
-    if (age <= 12) 
+    if (age <= 12)
     {
         rank = "menor";
     }
