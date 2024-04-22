@@ -3,7 +3,8 @@ using namespace std;
 
 int main() {
     // Dado un numero entero de la forma (AAAAMMDD), que representa una fecha valida mostrar el dio, mes y año que representa
-    int date, day, month, year = 0;
+    int date, day, month, year;
+    date = day = month = year = 0;
     cout << "HOLA USUARIO. Ingrese una fecha en formato AAAAMMDD porfi: ";
     cin >> date;
     day = date % 100;

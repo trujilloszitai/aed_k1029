@@ -4,7 +4,8 @@ using namespace std;
 int main()
 {
     // Dados dos valores enteros A y B, informar la suma, la resta y el producto.
-    int a, b, sum, sub1, sub2, mul = 0;
+    int a, b, sum, sub1, sub2, mul;
+    a = b = sum = sub1 = sub2 = mul = 0;
     cout << "HOLA USUARIO. Ingrese dos números (A y B) ENTEROS porfi." << endl;
     cout << "Número A: ";
     cin >> a;

@@ -3,7 +3,8 @@ using namespace std;
 
 int main() {
     //Dado tres valores determinar e imprimir una leyenda según sea: “Forman triangulo” o “No forman triangulo”.
-    int s1, s2, s3 = 0;
+    int s1, s2, s3;
+    s1 = s2 = s3 = 0;
     cout << "HOLA USUARIO. A continuación deberá ingresar tres valores para determinar si forman un triángulo." << endl;
     cout << "Ingrese el primer valor: ";
     cin >> s1;

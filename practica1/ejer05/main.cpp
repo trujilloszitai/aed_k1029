@@ -6,6 +6,7 @@ int main()
     // Dado un triángulo representado por sus lados L1, L2, L3, determinar e imprimir una leyenda según sea: equilátero, isósceles o escalenos.
     
     int s1, s2, s3;
+    s1 = s2 = s3 = 0;
     cout << "HOLA USUARIO. A continuación deberá ingresar por teclado los tres valores que representan a los lados de un triángulo para determinar si es equilátero, isósceles o escaleno." << endl;
     cout << "Ingrese el primer valor: ";
     cin >> s1;
