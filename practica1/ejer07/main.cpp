@@ -21,7 +21,9 @@ int main()
         "",
     };
 
-    for (int i = 0; i < times_size; i++)
+    int i = 0;
+
+    for (i; i < times_size; i++)
     {
         cout << "Ingrese el nombre del corredor " << i + 1 << ": ";
         cin >> runners_names[i];
@@ -32,7 +34,7 @@ int main()
         int time = runners_times[i];
         int speed = distance / time;
 
-        if (speed > winner_speed)
+        if (speed > winner_speed || i == 0)
         {
             winner_speed = speed;
             winner_name = name;
