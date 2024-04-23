@@ -3,6 +3,7 @@ using namespace std;
 
 int main()
 {
+    // Dados N valores informar el mayor, el menor y en que posición del conjunto fueron ingresados.
     int length, largest, lowest, lg_index, lw_index;
     length = largest = lowest = lg_index = lw_index = 0;
 

@@ -4,6 +4,11 @@ using namespace std;
 
 int main()
 {
+    /* Dado un conjunto de Nombres y Fechas de nacimientos (AAAAMMDD), 
+    que finaliza con un Nombre= “FIN”, informar el nombre de la persona 
+    con mayor edad y el de la mas joven. Utilizar la función strcmp 
+    (<cstring>) para evaluar fin de datos. */
+    
     char older_name[50] = "";
     char younger_name[50] = "";
     int older_bd, younger_bd;
@@ -22,7 +27,7 @@ int main()
             end = true;
         else
         {
-            cout << "Ingrese la edad de la persona n°" << i << ": ";
+            cout << "Ingrese la fecha de nacimiento de la persona n°" << i << ": ";
             cin >> birthdate;
             if (i == 1)
             {
