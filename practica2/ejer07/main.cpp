@@ -3,81 +3,93 @@ using namespace std;
 
 struct Alumno
 {
+    char codigo_curso[5+1];
     char legajo[10 + 1];
     int nota;
 };
 
 struct Curso
 {
-    char codigo[4 + 1] = "";
-    Alumno alumnos[20] = {
-        {"", 0}};
+    char codigo[5 + 1] = "";
+    int cantidad_alumnos = 20;
+    int notas[10] = {0};
 };
 
-void informe_curso(Curso, int, int[], int, int);
+void informar_notas(char[], int[]);
+void informar_tasa_aprobacion(char[], int, int);
 
 int main()
 {
-    int largo = 20;
+    const int largo = 20;
     int i = 0;
     int cant_alumnos;
+    int cant_cursos = 4;
+    int alumnos_totales = 0;
+    Curso cursos[largo] = {
+        {"K1011", 3},
+        {"K1012", 4},
+        {"K1013", 5},
+        {"K1014", 6},
+    };
+    int tasa_aprobacion[4][2];
 
-    Curso cursos[largo];
+    for (int i = 0; i < 4; i++) alumnos_totales += cursos[i].cantidad_alumnos;
+    
 
     do
     {
-        Curso c;
-        cout << "Curso " << i + 1 << endl;
-        cout << "Codigo: ";
-        cin >> c.codigo;
-        cout << "Cantidad de alumnos " << i + 1 << ": ";
-        cin >> cant_alumnos;
+        Curso curso = cursos[i];
+        const int alumnos_x_curso = curso.cantidad_alumnos;
+        int cant_notas[10] = {0};
+        int aprobados = 0;
+        int desaprobados = 0;
+        int nota;
 
-        if (cant_alumnos > 0 && cant_alumnos < 21)
+        int j = 0;
+        Alumno a;
+        do
         {
-            int cant_notas[10] = {0};
-            int aprobados = 0;
-            int desaprobados = 0;
-            int nota;
+            cout << "Alumno " << j + 1 << endl;
+            cout << "Legajo: ";
+            cin >> a.legajo;
+            cout << "Nota: ";
+            cin >> nota;
 
-            int j = 0;
-            Alumno a;
-            do
+            if (nota > 0 && nota < 11)
             {
-                cout << "Alumno " << j + 1 << endl;
-                cout << "Legajo: ";
-                cin >> a.legajo;
-                cout << "Nota: ";
-                cin >> nota;
+                a.nota = nota;
+                curso.notas[a.nota - 1]++;
+                nota >= 6 ? aprobados++ : desaprobados++;
+            }
+            j++;
+        } while (nota > 0 && nota < 11 && j < curso.cantidad_alumnos);
 
-                if (nota > 0 && nota < 11)
-                {
-                    a.nota = nota;
-                    cursos[i].alumnos[j] = a;
-                    cant_notas[a.nota - 1]++;
-                    nota >= 6 ? aprobados++ : desaprobados++;
-                }
-                j++;
-            } while (nota > 0 && nota < 11 && j < cant_alumnos);
+        tasa_aprobacion[i][0] = aprobados;
+        tasa_aprobacion[i][1] = desaprobados;
+        informar_notas(curso.codigo, curso.notas);
 
-            informe_curso(c, i + 1, cant_notas, aprobados, desaprobados);
-        }
         i++;
-    } while (cant_alumnos > 0 && cant_alumnos < 21 && i < largo);
+    } while (i < cant_cursos);
+    
     return 0;
 }
 
-void informe_curso(Curso c, int i, int cant_notas[], int aprobados, int desaprobados)
+void informar_notas(char codigo[], int cant_notas[])
 {
-    cout << "Informe del curso " << i << ": " << endl;
+    cout << "Notas del curso " << codigo << ": " << endl;
     for (int j = 0; j < 10; j++)
     {
-        if (cant_notas[j] != 0) cout << cant_notas[j] << " alumnos sacaron " << j + 1 << endl;
+        if (cant_notas[j] != 0)
+            cout << cant_notas[j] << " alumnos sacaron " << j + 1 << endl;
     }
+}
 
-    int tasa_aprobados = aprobados / float(aprobados + desaprobados) * 100;
+void informar_tasa_aprobacion(char codigo[], int aprobados, int desaprobados)
+{
+        int tasa_aprobados = aprobados / float(aprobados + desaprobados) * 100;
     int tasa_desaprobados = desaprobados / float(aprobados + desaprobados) * 100;
 
+    cout << "Tasa de aprobación del curso " << codigo << ": " << endl;
     cout << "El " << tasa_aprobados << "% del curso aprobó" << endl;
     cout << "El " << tasa_desaprobados << "% del curso desaprobó" << endl;
 }
