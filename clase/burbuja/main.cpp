@@ -19,7 +19,7 @@ void bubble_sort_by_id(Book v[], int N, bool asc)
         {
             compare = asc ? v[j - 1].id > v[j].id : v[j - 1].id < v[j].id;
 
-            if (compare) // condicion a cumplir para int.
+            if (compare) // condicion a cumplir para intercambio
             {                          // intercambio
                 aux = v[j - 1];
                 v[j - 1] = v[j];
