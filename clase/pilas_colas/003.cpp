@@ -1,64 +1,42 @@
+// dadas dos colas retorne la union de las dos colas en una unica cola
+// primero la cola1, luego la cola2
+
+
+// TAREA   TAREA   TAREA   TAREA   TAREA   TAREA
+// dos funciones, una que una dos colas una a continuacion de la otra, y otra
+// funcion que una dos colas ordenadas manteniendo el orden (apareo)
+cola unirColas(nodo* frente1, nodo* frente2, nodo* fin1, nodo* fin2);
+cola aparearColas(...);
+// TAREA   TAREA   TAREA   TAREA   TAREA   TAREA
+
+
 #include <iostream>
 using namespace std;
 
-/* PROCEDIMIENTOS PARA PILAS Y COLAS */
-
-// ESTRUCTURAS CON UN STRUCT EN EL CAMPO DE INFO
-// en el campo de la informacion ahora tendremos un struct de tipoInfo
+// estructuras con un struct en el campo de informacion
 struct tipoInfo
 {
         int campo1;
         int campo2;
 };
+// en el campo de la informacion ahora tendremos un struct de tipoInfo
 
-// ESTRUCTURA AUTORREFERENCIADA
+// estructura autorreferenciada
 struct nodo
 {
     tipoInfo info;            // informacion
     nodo*    siguiente;       // puntero al proximo nodo
 };
 
-// PROCEDIMIENTOS PARA PILA
-
-// INSERTAR UN NODO EN UNA PILA
-// la funcion devuelve void, recibe como parametro el puntero de la pila
-// que siempre se modifica y el entero x a cargar en el nodo que
-// se va a crear
-void push(nodo* &pila, tipoInfo x)
+struct cola
 {
+    nodo* frente;
+    nodo* fin;
+};
+// decidimos retornar el frente y el fin de la cola en la funcion por lo que
+// armamos este struct
 
-nodo* p = new nodo; // con un puntero auxiliar p se pide memoria para crear un nuevo nodo
-p->info = x; //(*p).info = x; forma alternativa de expresarlo
-// al campo info del nodo apuntado por p le asignamos el parametro x
 
-p->siguiente = pila;
-// hacemos que el siguiente nodo creado apunte a pila, que es
-// el anterior primero
-
-pila = p;
-// el nuevo nodo pasa a ser el comienzo de la estructura
-}
-
-// funcion para eliminar un nodo en la pila
-tipoInfo pop(nodo* &pila)
-{
-    // la funcion retorna el campo info que esta en el primer nodo y elimina a x
-
-    nodo* p = pila;
-    // creamos un puntero auxiliar p y le asignamos el comienzo de la pila
-
-    tipoInfo x = p->info;
-    // a x le asignamos el campo info que esta en el primer nodo
-
-    pila = p->siguiente;
-    // hacemos que pila apunte al nodo siguiente
-
-    delete p;
-    // eliminamos la instancia del que era el primer nodo
-
-    return x;
-    // retorna el valor que estaba en el primer nodo
-}
 
 // funciones para una cola
 // insertar un nodo en una cola
@@ -118,12 +96,26 @@ tipoInfo unqueue(nodo* &frente, nodo* &fin)
     return x;
 }
 
+// funcion que una dos colas
+cola unirColas(nodo* frente1, nodo* frente2, nodo* fin1, nodo* fin2)
+{
+    cola c;
+    // es un registro
+
+    c.frente = frente1;
+    c.fin = fin2;
+
+    // TERMINAR
+}
+
+// unir dos colas ordenadas conservando el orden
+// TERMINAR, APAREO
+
+
+
 int main()
 {
     // declarar los punteros que controlan la estructura
-
-    nodo* pila = NULL;
-    // controlara a la pila y tiene que tener NULL como valor de inicializacion
 
     nodo* frente = NULL;
     // para controlar el frente de la cola
@@ -134,37 +126,22 @@ int main()
     tipoInfo valor;
     // para cargar o extraer los valores de la pila o de la cola
 
-    //cargamos valores en una pila y en una cola
+    //cargamos valores en una cola
     valor.campo1 = 5;
     valor.campo2 = 50;
-    push(pila, valor);
     queue(frente, fin, valor);
 
     valor.campo1 = 7;
     valor.campo2 = 70;
-    push(pila, valor);
     queue(frente, fin, valor);
 
     valor.campo1 = 9;
     valor.campo2 = 90;
-    push(pila, valor);
     queue(frente, fin, valor);
 
     valor.campo1 = 11;
     valor.campo2 = 110;
-    push(pila, valor);
     queue(frente, fin, valor);
-    // recorrer la pila y mostrar los valores
-    while (pila != NULL)
-    {
-        // mientras haya datos en la pila
-
-        valor = pop(pila);
-        // tomamos el valor el campo de la informacion del primer nodo
-
-        cout << valor.campo1 << ", " << valor.campo2 << endl;
-    }
-    cout << endl;
 
     while (frente != NULL)
     {
